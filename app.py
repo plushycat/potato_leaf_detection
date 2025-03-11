@@ -26,22 +26,18 @@ st.sidebar.title('POTATO DISEASE DETECTION SYSTEM')
 app_mode = st.sidebar.selectbox("Select Page",["HOME","DISEASE RECOGNITION"])
 
 if(app_mode=="HOME"):
-    st.markdown("<h1 style='text-align: center; color: red;'>Plant Disease Detection</h1>", unsafe_allow_html=True)
-elif app_mode == "DISEASE RECOGNITION":
-    st.markdown("<h1 style='text-align: center;'>Plant Disease Detection System for Sustainable Agriculture</h1>", unsafe_allow_html=True)
-    st.header("Plant Disease Detection")
-    test_image = st.file_uploader("Choose an image:")
-    
-    if test_image is not None:
-        if st.button("Show Image"):
-            st.image(test_image, width=400, use_column_width=True)
-        
-        # Predict button
-        if st.button("Predict"):
-            st.snow()
-            st.write("Our Prediction")
-            result_index = model_prediction(test_image)
-            
-            # Reading Labels
-            class_names = ['Potato Early blight', 'Potato Late blight', 'Potato healthy']
-            st.success("Model is Predicting it's a {}".format(class_names[result_index]))
+    st.markdown("<h1 style='text-align: center;'>Plant Disease Detection System for Sustainable Agriculture", unsafe_allow_html=True)
+
+elif(app_mode=="DISEASE RECOGNITION"):
+    st.header('Plant disease detection')
+    test_image=st.file_uploader('Choose an image:')
+    if(st.button("Show Image")):
+        st.image(test_image,width=4,use_column_width=True)
+    #Predict button
+    if(st.button("Predict")):
+        st.snow()
+        st.write("Our Prediction")
+        result_index = model_prediction(test_image)
+        #Reading Labels
+        class_name = ['Potato___Early_blight', 'Potato___Late_blight', 'Potato___healthy']
+        st.success("Model is Predicting it's a {}".format(class_name[result_index]))
